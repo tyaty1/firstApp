@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 
 export class FootballService {
 
-  jsonUrl: string = 'https://raw.githubusercontent.com/openfootball/football.json/master/2016-17/en.1.clubs.json';
+  jsonUrl = 'https://raw.githubusercontent.com/openfootball/football.json/master/2016-17/en.1.clubs.json';
 
   constructor(
     private http: HttpClient

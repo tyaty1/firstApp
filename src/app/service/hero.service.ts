@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class HeroService {
-  jsonUrl: string = 'http://localhost:3000/heroes';
+  jsonUrl = 'http://localhost:666/heroes';
   constructor(
     private http: HttpClient
   ) { }
@@ -22,7 +22,8 @@ export class HeroService {
     return this.http.post<Observable<any>>(this.jsonUrl, hero);
   }
   update(hero: Hero): Observable<any> {
-    return this.http.put(`${this.jsonUrl}/${hero.id}`, hero);
+    return   this.http.put(`${this.jsonUrl}/${hero.id}`, hero);
+
   }
   remove(hero: any ): Observable<any> {
     hero = hero.id ? hero.id : hero;
