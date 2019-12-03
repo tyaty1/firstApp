@@ -19,7 +19,16 @@ export class HeroService {
     return this.http.get<Hero>(`${this.jsonUrl}/${id}`);
   }
   add(hero: Hero): Observable<any> {
-    return this.http.post<Observable<any>>(this.jsonUrl, hero);
+    let  a;
+    try{
+       a = this.http.post<Observable<any>>(this.jsonUrl, hero);
+       return a;
+    }
+    catch(error){
+      console.error('A HIBA:', error.message);
+    }
+
+    return a;
   }
   update(hero: Hero): Observable<any> {
     return   this.http.put(`${this.jsonUrl}/${hero.id}`, hero);

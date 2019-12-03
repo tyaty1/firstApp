@@ -35,15 +35,19 @@ export class AppComponent {
 
 
     this.hService.add({ id: 7, name: 'NotVista', address: 'Brockton Bay', superpower: 'Spatial  manipulation ' }).forEach(element => {
-      console.log('First hero', element);
+      console.log('A hero', element);
     });
 
     this.hService.update({ id: 7, name: 'Vista', address: 'Brockton Bay', superpower: 'Spatial  manipulation ' }).forEach(element => {
-      console.log('First hero', element);
+      console.log('U hero', element);
     });
 
     this.hService.remove(2).forEach(element => {
       console.log('D hero', element);
+    });
+
+    this.hService.add({ id: 2, name: 'NotVista', address: 'Brockton Bay', superpower: 'Spatial  manipulation ' }).forEach(element => {
+      console.log('Added  hero', element);
     });
 
   }
