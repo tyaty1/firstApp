@@ -12,43 +12,43 @@ import { HeroService } from './service/hero.service';
 
 export class AppComponent {
   title = 'firstApp';
-  myHero: Hero = {
-    name: 'Skitter',
-    address: 'Brockton Bay',
-    superpower: 'bug control'
-  };
+  myHero: Hero;
 
   listObervable: Observable<any>;
 
-  constructor(
-    private fService: FootballService,
-    private hService: HeroService
-  ) {
+  constructor(private fService: FootballService, private hService: HeroService) {
+
     this.hService.getAll().forEach(element => {
-      console.log('All Hero ', element);
+      console.log('getAll', element);
     });
 
-    this.hService.getOne(1).forEach(element => {
-      console.log('Fisrs hero', element);
-    });
+    this.listObervable = hService.getAll();
+    // this.hService.getOne(1).forEach(element => {
+    //   console.log('Fisrs hero', element);
+    // });
 
+    this.hService
+      .add({ id: 7, name: 'NotVista', address: 'Brockton Bay', superpower: 'Spatial  manipulation ' });
 
-
-    this.hService.add({ id: 7, name: 'NotVista', address: 'Brockton Bay', superpower: 'Spatial  manipulation ' }).forEach(element => {
-      console.log('A hero', element);
-    });
 
     this.hService.update({ id: 7, name: 'Vista', address: 'Brockton Bay', superpower: 'Spatial  manipulation ' }).forEach(element => {
       console.log('U hero', element);
+    });
+
+
+
+    this.hService.add({ id: 2, name: 'NotVista', address: 'Brockton Bay', superpower: 'Spatial  manipulation ' }).forEach(element => {
+      console.log('Added  hero', element);
     });
 
     this.hService.remove(2).forEach(element => {
       console.log('D hero', element);
     });
 
-    this.hService.add({ id: 2, name: 'NotVista', address: 'Brockton Bay', superpower: 'Spatial  manipulation ' }).forEach(element => {
-      console.log('Added  hero', element);
-    });
-
   }
+
+  setHero(hero: Hero): void {
+    this.myHero = hero;
+  }
+
 }
